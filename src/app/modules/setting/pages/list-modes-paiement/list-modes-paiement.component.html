@@ -1,0 +1,156 @@
+
+
+
+<div class="mb-4">
+  <input class="block  px-4 w-1/3 py-3 mt-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text"
+         [(ngModel)]="searchTerm"
+         (ngModelChange)="applyFilter()"
+         placeholder="Recherche..."
+         
+         
+         >
+</div>
+
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr class="text-gray-600 uppercase text-sm leading-normal">
+    
+
+
+        <th class="py-3 px-6 text-left">Mode de Paiement</th>
+        <th class="py-3 px-6 text-left">Remarque</th>
+        <th class="py-3 px-6 text-left">Par défaut</th>
+        <th class="py-3 px-6 text-left">A un numéro</th>
+        <th class="py-3 px-6 text-left">A une échéance</th>
+        <th class="py-3 px-6 text-left">A un propriétaire</th>
+        <th class="py-3 px-6 text-left">Banque</th>
+        <th class="py-3 px-6 text-left">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-600 text-sm font-light">
+      <tr *ngFor="let item of filteredData " class="border-b border-gray-200">
+     
+
+        <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.MODE_PAIMANT }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.REMARQUE }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.DEFAUT" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.HasNumber" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.HasDeadLine" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.hasHolder" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.IncludeBanc" disabled>
+          </td>
+
+        <td class="py-3 px-6 text-left">
+          <!-- Trigger Button -->
+          <button id="dropdownMenuIconButton"
+                  (click)="toggleDropdown('dots', item.MODE_PAIMENT_ID)"
+                  class="dropdown-button inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                  type="button">
+            <!-- Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-blue-700">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div *ngIf="isDropdownOpen('dots', item.MODE_PAIMENT_ID)" id="dropdownDots"
+               class="dropdown-menu z-10 absolute right-12 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+              <li>
+                <button (click)="openModal(item)" class="block px-4 py-2 text-blue-600 hover:bg-gray-100">modifier</button>
+              </li>
+              <li>
+                <button (click)="openConfirmationModal(item)" class="block px-4 py-2 text-red-600">supprimer</button>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Edit Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+  <!-- Modal Container -->
+  <div class="bg-white rounded-lg shadow-lg w-2/6 h-1/2">
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b px-4 py-2">
+      <h3 class="text-xl font-semibold">Modifier MODE PAIMANT</h3>
+      <button class="text-gray-600 hover:text-gray-800" (click)="closeModal()">×</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="px-6 py-4">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">MODE_PAIMANT</label>
+        <input type="text" [(ngModel)]="selected.MODE_PAIMANT" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">REMARQUE</label>
+        <input type="text" [(ngModel)]="selected.REMARQUE" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">DEFAUT</label>
+        <input type="checkbox" [(ngModel)]="selected.DEFAUT">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">HasNumber</label>
+        <input type="checkbox" [(ngModel)]="selected.HasNumber">
+      </div> <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">HasDeadLine</label>
+        <input type="checkbox" [(ngModel)]="selected.HasDeadLine">
+      </div> <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">IncludeBanc</label>
+        <input type="checkbox" [(ngModel)]="selected.IncludeBanc">
+      </div>
+     
+
+      
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="flex justify-end px-4 py-2 border-t">
+      <button class="mr-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-md" (click)="closeModal()">Annuler</button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded-md" (click)="update()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div *ngIf="isConfirmationModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+  <!-- Modal Container -->
+  <div class="bg-white rounded-lg shadow-lg w-1/3">
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b px-4 py-2">
+      <h3 class="text-xl font-semibold">Confirmer la suppression</h3>
+      <button class="text-gray-600 hover:text-gray-800" (click)="closeConfirmationModal()">×</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="px-6 py-4">
+      <p>Êtes-vous sûr de vouloir supprimer ce Mode de Paiement?</p>
+      <p><strong>{{ ToDelete?.LIBELE }}</strong></p>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="flex justify-end px-4 py-2 border-t">
+      <button class="mr-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-md" (click)="closeConfirmationModal()">Annuler</button>
+      <button class="bg-red-600 text-white px-4 py-2 rounded-md" (click)="confirmDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

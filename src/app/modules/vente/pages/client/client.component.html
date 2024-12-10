@@ -1,0 +1,129 @@
+<!-- client.component.html -->
+<div class="mx-auto m-5 w-2/3 p-3 bg-white shadow-md rounded-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-600">Client Information</h1>
+
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="flex flex-col">
+          <label for="CLIENT_CODE" class="mb-1 font-semibold text-gray-700">Client Code</label>
+          <input id="CLIENT_CODE" formControlName="CLIENT_CODE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="NOM" class="mb-1 font-semibold text-gray-700">Name</label>
+          <input id="NOM" formControlName="NOM" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="NOM2" class="mb-1 font-semibold text-gray-700">Second Name</label>
+          <input id="NOM2" formControlName="NOM2" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="ADRESSE" class="mb-1 font-semibold text-gray-700">Address</label>
+          <input id="ADRESSE" formControlName="ADRESSE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="VILLE" class="mb-1 font-semibold text-gray-700">City</label>
+          <input id="VILLE" formControlName="VILLE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="TEL" class="mb-1 font-semibold text-gray-700">Telephone</label>
+          <input id="TEL" formControlName="TEL" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="GSM" class="mb-1 font-semibold text-gray-700">Mobile</label>
+          <input id="GSM" formControlName="GSM" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="FAXE" class="mb-1 font-semibold text-gray-700">Fax</label>
+          <input id="FAXE" formControlName="FAXE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="CONTACT" class="mb-1 font-semibold text-gray-700">Contact</label>
+          <input id="CONTACT" formControlName="CONTACT" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="MAIL" class="mb-1 font-semibold text-gray-700">Email</label>
+          <input id="MAIL" formControlName="MAIL" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="email" />
+        </div>
+        <div class="flex flex-col">
+          <label for="LOGO" class="mb-1 font-semibold text-gray-700">Logo</label>
+          <input id="LOGO" formControlName="LOGO" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="IF" class="mb-1 font-semibold text-gray-700">IF</label>
+          <input id="IF" formControlName="IF" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="PATENTE" class="mb-1 font-semibold text-gray-700">Patente</label>
+          <input id="PATENTE" formControlName="PATENTE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="RC" class="mb-1 font-semibold text-gray-700">RC</label>
+          <input id="RC" formControlName="RC" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="CNSS" class="mb-1 font-semibold text-gray-700">CNSS</label>
+          <input id="CNSS" formControlName="CNSS" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="SEUIL_CREDIT" class="mb-1 font-semibold text-gray-700">Credit Limit</label>
+          <input id="SEUIL_CREDIT" formControlName="SEUIL_CREDIT" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="OLD_CREDIT" class="mb-1 font-semibold text-gray-700">Old Credit</label>
+          <input id="OLD_CREDIT" formControlName="OLD_CREDIT" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+            <label for="CLIENT_CATEGORIE_ID" class="mb-1 font-semibold text-gray-700">Client Category ID</label>
+            <select id="CLIENT_CATEGORIE_ID" formControlName="CLIENT_CATEGORIE_ID" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="" disabled selected>Select a category</option>
+              <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+            </select>
+          </div>
+          
+        <div class="flex flex-col">
+          <label for="INS_USER" class="mb-1 font-semibold text-gray-700">Inserted By</label>
+          <input id="INS_USER" formControlName="INS_USER" class="p-2 border border-gray-300 rounded bg-gray-100" type="text"  />
+        </div>
+        <div class="flex flex-col">
+          <label for="INS_DATE" class="mb-1 font-semibold text-gray-700">Insert Date</label>
+          <input id="INS_DATE" formControlName="INS_DATE" class="p-2 border border-gray-300 rounded bg-gray-100" type="date"  />
+        </div>
+        <div class="flex flex-col">
+          <label for="UPD_USER" class="mb-1 font-semibold text-gray-700">Updated By</label>
+          <input id="UPD_USER" formControlName="UPD_USER" class="p-2 border border-gray-300 rounded bg-gray-100" type="text"  />
+        </div>
+        <div class="flex flex-col">
+          <label for="UPD_DATE" class="mb-1 font-semibold text-gray-700">Update Date</label>
+          <input id="UPD_DATE" formControlName="UPD_DATE" class="p-2 border border-gray-300 rounded bg-gray-100" type="date"  />
+        </div>
+        <div class="flex flex-col">
+          <label for="DEFAUT" class="mb-1 font-semibold text-gray-700">Default</label>
+          <input id="DEFAUT" formControlName="DEFAUT" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex items-center">
+          <input id="ACTIF" formControlName="ACTIF" class="mr-2" type="checkbox" />
+          <label for="ACTIF" class="font-semibold text-gray-700">Active</label>
+        </div>
+        <div class="flex flex-col">
+          <label for="ICE" class="mb-1 font-semibold text-gray-700">ICE</label>
+          <input id="ICE" formControlName="ICE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="VendorId" class="mb-1 font-semibold text-gray-700">Vendor ID</label>
+          <input id="VendorId" formControlName="VendorId" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="CONTACT_ID" class="mb-1 font-semibold text-gray-700">Contact ID</label>
+          <input id="CONTACT_ID" formControlName="CONTACT_ID" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" />
+        </div>
+        <div class="flex flex-col">
+          <label for="IS_CONFRERE" class="mb-1 font-semibold text-gray-700">Is Confrere</label>
+          <input id="IS_CONFRERE" formControlName="IS_CONFRERE" class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="checkbox" />
+        </div>
+      </div>
+      <div class="flex justify-center mt-6">
+        <button type="submit" class="px-4 w-1/4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
+      </div>
+    </form>
+  </div>
+  

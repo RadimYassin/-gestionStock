@@ -1,0 +1,144 @@
+<div class="m-4">
+    <div class="flex justify-between items-center p-4">
+        <nav class="text-sm text-gray-600">
+            <ol class="list-reset flex">
+                <li>
+                    <a href="#" class="text-blue-600 hover:underline">Livraison</a>
+                </li>
+                <li>
+                    <span class="mx-2">></span>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-600">Listing</a>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Add New Button -->
+        <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            Nouveau
+        </button>
+    </div>
+    <div class="filter-container p-4">
+        <form [formGroup]="filterForm">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="startDate" class="block text-sm font-medium text-gray-700">Du:</label>
+                    <input id="startDate" type="date" formControlName="startDate"
+                        class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                </div>
+                <div class="form-group">
+                    <label for="endDate" class="block text-sm font-medium text-gray-700">Au:</label>
+                    <input id="endDate" type="date" formControlName="endDate"
+                        class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                </div>
+                <div class="form-group">
+                    <label for="filterBy" class="block text-sm font-medium text-gray-700">Filtre par:</label>
+                    <select id="filterBy" formControlName="filterBy"
+                        class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                        <option value="Date">Date</option>
+                        <option value="Client">Client</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option" class="block text-sm font-medium text-gray-700">Option:</label>
+                    <select id="option" formControlName="option"
+                        class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                        <option value="">Option</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fournisseur" class="block text-sm font-medium text-gray-700">Fournisseur:</label>
+                    <select id="fournisseur" formControlName="fournisseur"
+                        class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                        <option value="">Fournisseur</option>
+                        <option *ngFor="let f of fournisseur" [value]="f.FOURNISSEUR_ID">{{ f.NOM }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pageSize" class="block text-sm font-medium text-gray-700">Lignes par page:</label>
+                    <select id="pageSize" formControlName="pageSize"
+                      class="form-element block w-full rounded-md border-gray-300 shadow-sm text-center">
+                      <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="overflow-x-auto mt-4">
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr class=" text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-6 text-left">Référence</th>
+                    <th class="py-3 px-6 text-left">Nom du Client</th>
+                    <th class="py-3 px-6 text-left">Date de Livraison</th>
+                    <th class="py-3 px-6 text-left">Montant Total</th>
+                    <th class="py-3 px-6 text-left">Total HT</th>
+                    <th class="py-3 px-6 text-left">Total TVA</th>
+                    <th class="py-3 px-6 text-left">Échéance</th>
+                    <th class="py-3 px-6 text-left">Action</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <tr *ngFor="let item of paginatedData" class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.REFERENCE }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.CLIENT_NOM }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.LIVRAISON_DATE | date:'yyyy-MM-dd' }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.MONTANT_TOTAL | currency:'Dh' }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.TotalHT | currency:'Dh' }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.TOTAL_TVA | currency:'Dh' }}</td>
+                    <td class="py-3 px-6 text-left">{{ item.ECHEANCE | date:'yyyy-MM-dd' }}</td>
+                    <td class="py-3 px-6 text-left">
+                        <button (click)="toggleDropdown(item.REFERENCE)" id="dropdownMenuIconButton"
+                            class="dropdown-button inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            type="button">
+                            <!-- Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-blue-700">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                              </svg>
+                        </button>
+
+                        <div *ngIf="isDropdownOpen(item.REFERENCE)" id="dropdownDots"
+                            class="dropdown-menu z-10 absolute right-12 bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownMenuIconButton">
+                                <li>
+
+                                    <button (click)="navigateEdit(item.LIVRAISON_ID)" class="block px-4 py-2 text-blue-600 hover:bg-gray-100">modifier</button>
+
+                                </li>
+                                <li>
+                                    <button class="block px-4 py-2 text-red-600">supprimer</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination mt-4 flex items-center">
+            <svg-icon src="assets/icons/heroicons/outline/left.svg" 
+                      [svgClass]="'h-5 w-5'"
+                      (click)="goToPage(currentPage - 1)" 
+                      [ngClass]="{'disabled': currentPage === 1}"
+                      [style.cursor]="currentPage === 1 ? 'not-allowed' : 'pointer'"></svg-icon>
+            
+            <span class="pagination-info mx-4">
+              Page {{currentPage}} of {{totalPages}}
+            </span>
+            
+            <svg-icon src="assets/icons/heroicons/outline/right.svg" 
+                      [svgClass]="'h-5 w-5'"
+                      (click)="goToPage(currentPage + 1)" 
+                      [ngClass]="{'disabled': currentPage === totalPages}"
+                      [style.cursor]="currentPage === totalPages ? 'not-allowed' : 'pointer'"></svg-icon>
+          </div>
+    </div>
+</div>

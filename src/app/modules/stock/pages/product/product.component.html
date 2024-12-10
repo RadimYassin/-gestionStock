@@ -1,0 +1,175 @@
+<div class="container mx-auto mt-20 m-5 w-2/3 p-3">
+<form nz-form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <nz-card nzTitle="Product Information">
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="CLIENT_CODE" nzRequired>Client Code</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="CLIENT_CODE" id="CLIENT_CODE" required>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="NOM" nzRequired>Name</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="NOM" id="NOM" required>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="QUANTITE">Quantity</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="QUANTITE" id="QUANTITE" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_ACHAT">Purchase Price</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_ACHAT" id="PRIX_ACHAT" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_BASE1">Base Price 1</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_BASE1" id="PRIX_BASE1" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_BASE2">Base Price 2</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_BASE2" id="PRIX_BASE2" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_REVIENT">Cost Price</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_REVIENT" id="PRIX_REVIENT" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="FRAIS_DIVERS">Miscellaneous Costs</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="FRAIS_DIVERS" id="FRAIS_DIVERS" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="MARGE">Margin (%)</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="MARGE" id="MARGE" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_VENTE">Selling Price</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_VENTE" id="PRIX_VENTE" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="PRIX_VENTE_MINIMUM">Min Selling Price</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="PRIX_VENTE_MINIMUM" id="PRIX_VENTE_MINIMUM" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="TTVA">VAT (%)</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="TTVA" id="TTVA" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="STOCK_SEUIL">Stock Threshold</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="STOCK_SEUIL" id="STOCK_SEUIL" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="CATEGORIE_ID">Category ID</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="CATEGORIE_ID" id="CATEGORIE_ID" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="UNITE_ID">Unit ID</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-input formControlName="UNITE_ID" id="UNITE_ID" type="number">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="INVENTORIE">Inventoried</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-checkbox formControlName="INVENTORIE" id="INVENTORIE" type="checkbox">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8" nzFor="is_active">Active</nz-form-label>
+            <nz-form-control [nzSpan]="16">
+              <input nz-checkbox formControlName="is_active" id="is_active" type="checkbox">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+  
+      <div nz-row>
+        <div nz-col [nzSpan]="24" style="text-align: right;">
+          <button nz-button nzType="primary" class="custom-button" type="submit" [disabled]="!clientForm.valid">Save</button>
+        </div>
+      </div>
+    </nz-card>
+  </form>
+</div>
+  

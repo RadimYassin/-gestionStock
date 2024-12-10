@@ -1,0 +1,60 @@
+.form-element {
+    height: 2.5rem; 
+    padding: 0.5rem; 
+    font-size: 0.875rem;
+}
+
+.form-element select {
+    -webkit-appearance: none; 
+    appearance: none; 
+}
+
+.form-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem; 
+}
+
+.form-container .form-group {
+    flex: 1;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+  
+    .pagination-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0.375rem; // rounded-md
+      padding: 0.5rem 1rem; // px-4 py-2
+      font-size: 0.875rem; // text-sm
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      &:hover {
+        background-color: #0056b3;
+        
+      }
+  
+      &:disabled {
+        background-color: #d6d6d6;
+        cursor: not-allowed;
+      }
+  
+      &.disabled {
+        background-color: #d6d6d6;
+        cursor: not-allowed;
+      }
+    }
+  
+    .pagination-info {
+      font-size: 0.875rem; 
+      color: #4a4a4a; 
+    }
+  }
+  

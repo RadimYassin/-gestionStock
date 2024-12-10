@@ -1,0 +1,97 @@
+<div class="p-6 rounded-lg mt-16">
+    <h2 class="text-blue-600">Entête</h2>
+  
+    <form>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="reference">Référence:</label>
+          <input type="text" id="reference"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                 name="reference" [(ngModel)]="formModel.reference" />
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="livraisonDate">Date:</label>
+          <input type="date" id="livraisonDate"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                 name="livraisonDate" [(ngModel)]="formModel.livraisonDate" />
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="client">Client:</label>
+          <input type="text" id="client"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                 name="client" [(ngModel)]="formModel.client" />
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="additionalField">+</label>
+          <input type="text" id="additionalField"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                 name="additionalField" [(ngModel)]="formModel.additionalField" />
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Employé:</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="employe" [(ngModel)]="formModel.employe">
+            <option *ngFor="let user of users" [value]="user.USER_ID">{{ user.NOM }}</option>
+          </select>
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Tarif:</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="tarif" [(ngModel)]="formModel.tarif">
+            <option></option>
+          </select>
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Dépôt:</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="depot" [(ngModel)]="formModel.depot">
+            <option *ngFor="let depot of depots" [value]="depot.DEPOT_ID">{{ depot.DEPOT_LIBELE }}</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Validation:</label>
+          <div class="flex items-center mt-1 space-x-2">
+            <input type="checkbox" class="form-checkbox" name="validation" [(ngModel)]="formModel.validation" />
+            <input type="date" class="block w-full rounded-md border-gray-300 shadow-sm text-center"
+                   name="validationDate" [(ngModel)]="formModel.validationDate" />
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Bon origine:</label>
+          <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="bonOrigine" [(ngModel)]="formModel.bonOrigine" />
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Méthode:</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="methode" [(ngModel)]="formModel.methode">
+            <option *ngFor="let m of methode" [value]="m.MODE_PAIMENT_ID">{{ m.MODE_PAIMANT }}</option>
+          </select>
+        </div>
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Condition:</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  name="condition" [(ngModel)]="formModel.condition">
+            <option *ngFor="let condition of venteConditions" [value]="condition.CONDTION_ID">
+              {{ condition.CONDITION_LIBELE }}
+            </option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Échéance:</label>
+          <div class="flex items-center mt-1 space-x-2">
+            <input type="checkbox" class="form-checkbox" name="echeance" [(ngModel)]="formModel.echeance" />
+            <input type="date" class="block w-full rounded-md border-gray-300 shadow-sm text-center"
+                   name="echeanceDate" [(ngModel)]="formModel.echeanceDate" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

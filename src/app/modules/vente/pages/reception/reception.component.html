@@ -1,0 +1,210 @@
+<div class="p-6 rounded-lg mt-16">
+    <h2 class="text-blue-600 text-2xl md:text-3xl">Entéte</h2>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="reference">Référence:</label>
+          <input type="text" id="reference" class="p-4 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                 [(ngModel)]="formModel.REFERENCE" name="REFERENCE" />
+        </div>
+  
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="client">Fournisseur:</label>
+          
+
+                 <select class="mt-1 block w-full rounded-md  border-gray-300 shadow-sm text-center"
+                 [(ngModel)]="formModel.FOURNISSEUR_CODE" name="FOURNISSEUR_CODE">
+           <option *ngFor="let f of fournisseur" [value]="f.FOURNISSEUR_ID">{{ f.NOM}}</option>
+         </select>
+        </div>
+  
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center" for="additionalField">+</label>
+          <input type="text" id="additionalField" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                 [(ngModel)]="formModel.FOURNISSEUR_NAME" name="FOURNISSEUR_NAME" />
+        </div>
+  
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Validation:</label>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox" [(ngModel)]="formModel.VALIDATION" name="VALIDATION" />
+            <input type="date" class="block p-4 w-full rounded-md border-gray-300 shadow-sm text-center"
+                   [(ngModel)]="formModel.VALIDATION_DATE" name="VALIDATION_DATE" />
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Date:</label>
+          <div class="flex items-center space-x-2">
+            <input type="date" class="block p-4 w-full rounded-md border-gray-300 shadow-sm text-center"
+                   [(ngModel)]="formModel.RECEPTION_DATE" name="RECEPTION_DATE" />
+          </div>
+        </div>
+  
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Bon Livraison:</label>
+          <div class="flex items-center space-x-2">
+            <input type="text" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                 />
+          </div>
+        </div>
+  
+        <div class="flex flex-col">
+          <div class="flex items-center mt-5 space-x-2">
+            <input type="date" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                   [(ngModel)]="formModel.DATE_ORIGINE" name="DATE_ORIGINE" />
+          </div>
+        </div>
+  
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Employé:</label>
+          <select class="mt-1 block w-full rounded-md  border-gray-300 shadow-sm text-center"
+                  [(ngModel)]="formModel.EmployeeId" name="employe">
+            <option *ngFor="let user of users" [value]="user.USER_ID">{{ user.NOM }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Dépôt:</label>
+          <select class="block w-full rounded-md border-gray-300 shadow-sm text-center"
+                  [(ngModel)]="formModel.DEPOT_NAME" name="depot">
+            <option *ngFor="let depot of depots" [value]="depot.DEPOT_LIBELE">{{ depot.DEPOT_LIBELE }}</option>
+          </select>
+        </div>
+  
+        <div class="flex flex-col items-center">
+          <label class="block text-sm font-medium text-gray-700 text-center">Facture:</label>
+          <input type="text" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                 [(ngModel)]="formModel.REFERENCE_FACTURE" name="REFERENCE_FACTURE" />
+        </div>
+  
+        <div class="flex flex-col items-center mt-5">
+          <input type="date" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                 [(ngModel)]="formModel.DATE_ORIGINE" name="DATE_ORIGINE" />
+        </div>
+  
+        <div class="flex flex-col">
+          <label class="block text-sm font-medium text-gray-700 text-center">Commande:</label>
+          <div class="flex items-center mt-1 space-x-2">
+            <input type="text" class="block w-full p-4 rounded-md border-gray-300 shadow-sm text-center"
+                   [(ngModel)]="formModel.COMMANDE_REF" name="COMMANDE_REF" />
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-gray-50 p-4 rounded-lg mb-4">
+        <p class="text-blue-600">Details</p>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="col-span-12 md:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Réf/CàB:</label>
+            <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.REFERENCE_ORIGINE" name="REFERENCE_ORIGINE" />
+          </div>
+  
+          <div class="col-span-12 md:col-span-6">
+            <label class="block text-sm font-medium text-gray-700">Sélectionner un article:</label>
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                    [(ngModel)]="formModel.article" name="article">
+              <option *ngFor="let article of articles" [value]="article.PRODUIT_ID">{{ article.NOM1 }}</option>
+            </select>
+          </div>
+  
+          <div class="col-span-6 md:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Unité:</label>
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                    [(ngModel)]="formModel.unity" name="unity">
+              <option *ngFor="let unity of Unity" [value]="unity.UNITE_ID">{{ unity.UNITE_LIBELE }}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Quantité:</label>
+            <input type="number" class="mt-1 p-4 block w-full rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.quantite" name="quantite" (ngModelChange)="calculateTotals()" />
+          </div>
+  
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Prix unitaire:</label>
+            <input type="number" class="mt-1 p-4 block w-full rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.prixUnitaire" name="prixUnitaire" (ngModelChange)="calculateTotals()" />
+          </div>
+  
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Gratuit:</label>
+            <input type="number" class="mt-1 p-4 block w-full rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.gratuit" name="gratuit" />
+          </div>
+  
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Remise:</label>
+            <input type="number" class="mt-1 p-4 block w-full rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.TotalRemise" name="remise" />
+          </div>
+  
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">TVA:</label>
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center"
+                    [(ngModel)]="formModel.TTVA"  (ngModelChange)="calculateTotals()" name="tva">
+              <option *ngFor="let tva of Tva" [value]="tva.TTVA">{{ tva.LIBELE }}</option>
+            </select>
+          </div>
+  
+          <div class="col-span-6 md:col-span-2">
+            <label class="block text-sm font-medium  text-gray-700">Expression:</label>
+            <input type="date" class="mt-1 block w-full p-4 rounded-md border-gray-300 shadow-sm"
+                   [(ngModel)]="formModel.Expression" name="Expression" />
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex flex-col md:flex-row justify-between mt-6">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-2 md:mb-0">
+          Enregistrer
+        </button>
+        <button type="reset" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+          Supprimer
+        </button>
+      </div>
+    </form>
+  
+    <div class="bg-gray-100 p-4 mt-4 rounded-lg">
+      <p class="text-right font-bold text-blue-700">TOTAL HT: {{ formModel.TotalHT  }} dh </p>
+      <p class="text-right font-bold text-blue-700">TVA: {{ formModel.TOTAL_TVA  }} dh </p>
+      <p class="text-right font-bold text-blue-700">TOTAL TTC: {{ formModel.MONTANT_TOTAL  }} dh </p>
+    </div>
+
+
+    <div class="bg-white p-4 mt-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4">reception</h3>
+        <table class="min-w-full table-auto">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Référence</th>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Date</th>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">fournisseur</th>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Montant Total</th>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">TOTAL_TVA</th>
+              <!-- Add more columns as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Reception of ReceptionData" class="border-b">
+              <td class="px-4 py-2 text-sm text-gray-700">{{ Reception.REFERENCE_ORIGINE }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ Reception.RECEPTION_DATE }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ Reception.FOURNISSEUR_NAME }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ Reception.MONTANT_TOTAL }} dh</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ Reception.TOTAL_TVA }}</td>
+              <!-- Add more cells as needed -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  

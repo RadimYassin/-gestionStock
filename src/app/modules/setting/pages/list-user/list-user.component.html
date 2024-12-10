@@ -1,0 +1,76 @@
+
+<div class="mb-4">
+    <input class="block  px-4 w-1/3 py-3 mt-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text"
+           [(ngModel)]="searchTerm"
+           (ngModelChange)="applyFilter()"
+           placeholder="Recherche..."
+           
+           
+           >
+  </div>
+  
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr class="text-gray-600 uppercase text-sm leading-normal">
+       
+
+            <th class="py-3 px-6 text-left">Nom</th>
+            <th class="py-3 px-6 text-left">Prenom</th>
+            <th class="py-3 px-6 text-left">Login</th>
+            <th class="py-3 px-6 text-left">Mot de pass</th>
+            <th class="py-3 px-6 text-left">Web_Password</th>
+            <th class="py-3 px-6 text-left">Tel</th>
+            <th class="py-3 px-6 text-left">Email</th>
+            <th class="py-3 px-6 text-left">id_role</th>
+            <th class="py-3 px-6 text-left">Actif</th>
+            <th class="py-3 px-6 text-left">Adresse</th>
+            <th class="py-3 px-6 text-left">Show_Margin</th>
+            <th class="py-3 px-6 text-left">ShowShopPrice</th>
+            <th class="py-3 px-6 text-left">EntreSalesPrice</th>
+            <th class="py-3 px-6 text-left">Blocker</th>
+            <th class="py-3 px-6 text-left">Provision sur produit fix</th>
+            <th class="py-3 px-6 text-left">Provision sur produit reel</th>
+            <th class="py-3 px-6 text-left">Reel, Fix et la Quantité</th>
+            <th class="py-3 px-6 text-left">Salaire</th>
+        </tr>
+      </thead>
+  
+      <tbody class="text-gray-600 text-sm font-light">
+        <tr *ngFor="let item of filteredData" class="border-b border-gray-200">
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.NOM }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.PRENOM }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.LOGIN }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.PASSWORD }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.UPD_USER }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.TEL }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.MAIL }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.ROLE_ID }}</td>
+
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.ACTIF" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.ADRESSE }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.ShowMargin" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.ShowShopPrice" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.EnterSalesPrice" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <input type="checkbox" [checked]="item.Blocked" disabled>
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.product_provisioning_fix }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.product_provisioning_rel }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.product_provisioning_fix_per_qty }}</td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ item.month_salery }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+ 
+  

@@ -1,0 +1,107 @@
+<div class="container mx-auto mt-20 p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-semibold">Gestion des utilisateurs</h2>
+    <button class="bg-blue-500 text-white py-2 px-4 rounded" (click)="openModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+      </svg>
+      NOUVEAU
+    </button>
+  </div>
+
+  <app-list-user></app-list-user>
+
+  <!-- Edit Modal -->
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg mt-20 m-5 w-full max-w-3xl p-4">
+      <div class="flex justify-between items-center border-b px-4 py-2">
+        <h3 class="text-xl font-semibold">Ajouter Utilisateur</h3>
+        <button class="text-gray-600 hover:text-gray-800" (click)="closeModal()">×</button>
+      </div>
+
+      <!-- Form Fields -->
+      <form (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+          <div class="mb-4">
+            <label class="text-gray-700">Nom:</label>
+            <input [(ngModel)]="User.NOM" name="NOM" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Prenom:</label>
+            <input [(ngModel)]="User.PRENOM" name="PRENOM" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Login:</label>
+            <input [(ngModel)]="User.LOGIN" name="LOGIN" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Password:</label>
+            <input [(ngModel)]="User.PASSWORD" name="PASSWORD" type="password" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Address:</label>
+            <input [(ngModel)]="User.ADRESSE" name="ADRESSE" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Email:</label>
+            <input [(ngModel)]="User.MAIL" name="MAIL" type="email" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Tel:</label>
+            <input [(ngModel)]="User.TEL" name="TEL" type="tel" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Role:</label>
+            <input [(ngModel)]="User.ROLE_ID" name="ROLE_ID" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Salaire:</label>
+            <input [(ngModel)]="User.month_salery" name="month_salery" type="text" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Web et Mobile Password:</label>
+            <input [(ngModel)]="User.INS_USER" name="INS_USER" type="text" class="form-input" />
+          </div>
+          <div class="mb-4 flex items-center">
+            <input [(ngModel)]="User.ACTIF" name="ACTIF" type="checkbox" class="form-checkbox" />
+            <label class="ms-2 text-sm font-medium text-gray-900">Actif</label>
+          </div>
+          <div class="mb-4 flex items-center">
+            <input [(ngModel)]="User.ShowMargin" name="ShowMargin" type="checkbox" class="form-checkbox" />
+            <label class="ms-2 text-sm font-medium text-gray-900">Affiche La Marge</label>
+          </div>
+          <div class="mb-4 flex items-center">
+            <input [(ngModel)]="User.EnterSalesPrice" name="EnterSalesPrice" type="checkbox" class="form-checkbox" />
+            <label class="ms-2 text-sm font-medium text-gray-900">Saisir Le Prix De Vente</label>
+          </div>
+          <div class="mb-4 flex items-center">
+            <input [(ngModel)]="User.ShowShopPrice" name="ShowShopPrice" type="checkbox" class="form-checkbox" />
+            <label class="ms-2 text-sm font-medium text-gray-900">Affiche Le Prix D'achat</label>
+          </div>
+          <div class="mb-4 flex items-center">
+            <input [(ngModel)]="User.Blocked" name="Blocked" type="checkbox" class="form-checkbox" />
+            <label class="ms-2 text-sm font-medium text-gray-900">Utilisateur</label>
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Reel:</label>
+            <input [(ngModel)]="User.product_provisioning_rel" name="product_provisioning_rel" type="number" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Fix:</label>
+            <input [(ngModel)]="User.product_provisioning_fix" name="product_provisioning_fix" type="number" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700">Reel, Fix et la quantité:</label>
+            <input [(ngModel)]="User.product_provisioning_fix_per_qty" name="product_provisioning_fix_per_qty" type="number" class="form-input" />
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex justify-end px-4 py-2 border-t">
+          <button type="button" class="mr-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-md" (click)="closeModal()">Annuler</button>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
